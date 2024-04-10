@@ -1,4 +1,4 @@
-@CSharpBank_HostAddress = http://localhost:5073
+@CSharpBank_HostAddress = http://localhost:5074
 
 GET {{CSharpBank_HostAddress}}/weatherforecast/
 Accept: application/json
