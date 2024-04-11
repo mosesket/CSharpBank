@@ -1,5 +1,6 @@
 using CSharpBank.Data;
 using CSharpBank.Models;
+using CSharpBank.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CSharpBank.Controllers;
@@ -8,18 +9,17 @@ namespace CSharpBank.Controllers;
 [ApiController]
 public class CustomerController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly CustomerService _customerService;
 
-    public CustomerController(AppDbContext context)
+    public CustomerController(CustomerService customerService)
     {
-        _context = context;
+        _customerService = customerService;
     }
 
     [HttpGet]
     public IActionResult GetALlCustomers()
     {
-        // Retrieve all customers from the database
-        var customers = _context.Customers.ToList();
+        var customers = _customerService.GetAllCustomers();
 
         if (customers.Any())
         {

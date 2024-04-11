@@ -1,4 +1,5 @@
 using CSharpBank.Data;
+using CSharpBank.Models;
 
 namespace CSharpBank.Services;
 
@@ -11,4 +12,8 @@ public class CustomerService
         _dbContext = dbContext;
     }
 
+    public List<Customer> GetAllCustomers()
+    {
+        return _dbContext.Customers.ToList();
+    }
 }
