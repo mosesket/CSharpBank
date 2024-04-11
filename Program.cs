@@ -1,4 +1,15 @@
+using CSharpBank.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var conString = builder.Configuration.GetConnectionString("Default");
+ServerVersion serverVersion = ServerVersion.AutoDetect(conString);
+
+builder.Services.AddDbContext<AppDbContext>(
+    options =>
+    options.UseMySql(conString, serverVersion)
+);
 
 // Add services to the container.
 
