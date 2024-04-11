@@ -1,4 +1,5 @@
 using CSharpBank.Data;
+using CSharpBank.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(
 );
 
 // Add services to the container.
+builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<TransactionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
